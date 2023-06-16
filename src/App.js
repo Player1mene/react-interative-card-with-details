@@ -169,7 +169,7 @@ const App = () => {
 
   }
 
-  const validationReal = (event) =>{
+  const validationReal = () =>{
     
     let validationHolder = false;
     let validationCard = false;
@@ -298,10 +298,9 @@ const App = () => {
     }
 
     if(validationHolder && validationCard && validationWeek && validationYear && validationCVC){
-      event.preventDefault();
       alert('Não fiz o sistema de confirmação ainda')
     }else{
-      event.preventDefault();
+      return false;
     }
 
   }
@@ -338,7 +337,7 @@ const App = () => {
           </div>
           <div className='col-md-9 formulario'>
               <div className='container form'>
-              <form onSubmit={e => validationReal(e)} >
+              <form>
               <div className="mb-3">
                   <Input id="cardname" name="cardholder" label="CARDHOLDER NAME"  value={cardHolder} setValue={({target}) => validateCardHolder(target.value)} placeholder="e.g:. Amanda Fernandes" maxLength="32" style={{ borderColor: errorHolder ? "red" : null }}/>
                   {errorHolder && <p style={{fontSize: "10px",color: "red", padding: "6px !important"}}>{errorHolder}</p>}
@@ -367,7 +366,7 @@ const App = () => {
                   {errorCVC ? <p className='alert' style={{fontSize: "10px",color: "red", padding: "6px !important"}}>{errorCVC}</p> : <p className='alert' style={{fontSize: "10px",color: "red", padding: "6px !important"}}></p>}
                      
                 <div className="mb-3">
-                  <button type='submit' className='cardbutton'>Confirm</button>
+                  <button onClick={validationReal} className='cardbutton'>Confirm</button>
                 </div>
               </form>
               </div>
