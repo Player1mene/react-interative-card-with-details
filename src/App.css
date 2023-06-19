@@ -452,7 +452,7 @@
 
 
   .form {
-    padding: 0 !important;
+    padding: 20px 0 !important;
     display: flex;
     align-items: center;
     align-content: center;
@@ -483,27 +483,28 @@
     background-repeat: no-repeat;
     align-items: center;
     display: flex;
-    justify-content: center;  flex-direction: column;
+    justify-content: center;  flex-direction: column-reverse;
   }
 
   .images .card-front {
-    margin-bottom: -10px !important;
-    margin-left: 0 !important;
+    margin-bottom: -50px !important;
+    margin-left: -50px !important;
   }
   
   .images .card-back {
-    margin-bottom: -60px !important;
+    margin-bottom: -100px !important;
     margin-left: 0 !important;
   }
 
   .formulario {
-    padding: 0 !important;
+    padding: 50px 0 !important;
     padding-right: 0 !important;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
-    min-height: 100vh;
+    height: auto !important;
+    min-height: 300px !important;
   }
   
 
@@ -511,12 +512,12 @@
   .form {
     max-width: 5000px !important;
     min-width: 100%;
-    padding: 0 !important;
+    padding: 20px 0 !important;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content:center;
-    min-height: 100vh;
+    min-height: auto;
   }
 
   .form-card {
@@ -535,8 +536,7 @@
 @media screen and (max-width: 415px)  {
   
   .images .card-front {
-    margin-bottom: -50px !important;
-    margin-left: 0 !important;
+    z-index: 400;
     transform: scale(0.8);
   }
 
@@ -546,8 +546,6 @@
   }
   
   .images .card-back {
-    margin-bottom: -60px !important;
-    margin-left: 0 !important;
     transform: scale(0.8);
   }
 

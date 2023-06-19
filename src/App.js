@@ -29,10 +29,20 @@ const App = () => {
   const [confirm, setConfirm] = React.useState(false);
   const [transition, setTrasintion] = React.useState(false);
   
-  React.useEffect(()=>{
-    setLoading(true)
-  },[])
 
+  
+  React.useEffect(()=>{
+    setLoading(true);
+    setModal(true);
+  },[])
+  
+  React.useEffect(()=>{
+    if(!modal){
+      document.querySelector('body').style = "overflow-y:auto;";
+    }else{
+      document.querySelector('body').style = "overflow-y:hidden;";  
+    }
+  },[modal])
 
 
   
