@@ -5,7 +5,7 @@ const Loadinglayer = ({ className }) => {
     return (
       <>
         <div className={className} >
-            <i className="fa-solid fa-circle-notch fa-spin"></i>
+            <i className="fa-solid fa-circle-notch spinning"></i>
             <h1>Carregando</h1>    
         </div>
       </>

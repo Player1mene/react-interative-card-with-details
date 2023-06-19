@@ -222,6 +222,139 @@
 }
 
 
+.modal-info {
+  z-index: 999;
+  position: fixed;
+  padding: 0 2% !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(42, 42, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+
+  padding: 20px 2% !important;
+  background-color: white;
+  border-radius: 4px;
+
+}
+
+.confirm-on {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.circle-confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.icon {
+  transition: 0.5s ease-in-out;
+}
+
+.confirm {
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.confirm-off i, .confirm-on i {
+  font-size: 50px;
+  color: white;
+}
+
+.icon-false {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: rgb(192, 190, 190);
+}
+
+
+.icon-true {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: hsl(278, 68%, 11%);
+}
+
+.transition-title {
+  text-align: center;
+}
+
+.spinning {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.transition-title p {
+  padding: 5px 0 !important;
+  text-align: center;
+  color: hsl(0, 0%, 75%);
+}
+
+.confirm-off {
+  display: none;
+}
+
+.form-card {
+  position: relative;
+}
+
+.modal-titulo {
+  width: 100%;
+}
+
+.modal-titulo h2 {
+  padding: 5px 0 !important;
+  font-weight: bold;
+}
+
+.modal-desc p {
+  padding: 20px 0 !important;
+  font-weight: bold;
+}
+
+.modal-info button {
+  padding: 7px 20px !important;
+  background-color: hsl(278, 68%, 11%);
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+
 
 @media screen and (max-width: 1150px) {
   .images .card-front {
@@ -254,7 +387,7 @@
     min-height: 100vh;
   }
 
-  form {
+  .form-card {
     width: 50%;
   }
 
@@ -276,7 +409,7 @@
     margin-left: 20px !important;
   }
 
-  form {
+  .form-card {
     width: 50%;
   }
 
@@ -327,7 +460,7 @@
     min-height: 100vh;
   }
 
-  form {
+  .form-card {
     width: 50%;
   }
 
@@ -386,7 +519,7 @@
     min-height: 100vh;
   }
 
-  form {
+  .form-card {
     width: 70%;
   }
 
@@ -407,7 +540,7 @@
     transform: scale(0.8);
   }
 
-  form {
+  .form-card {
     padding: 0 4% !important;
     width: 100%;
   }

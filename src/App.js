@@ -2,30 +2,35 @@ import React from 'react';
 import './App.css';
 import Input from './Form/Input';
 import Loadinglayer from './Layers/Loadinglayer';
+import Confirmlayer from './Layers/Confirmlayer';
 
 
 const App = () => {
+
+
 
   
   
 
   //numero cartão
-  const [cardNumber, setCardNumber] = React.useState('')
+  const [cardNumber, setCardNumber] = React.useState('');
   const [cardFormatter, setCardFormatter] = React.useState('0000000000000000');
-  const [cardHolder, setCardHolder] = React.useState('')
-  const [cardWeek, setCardWeek] = React.useState('')
-  const [cardYear, setCardYear] = React.useState('')
-  const [cardCvc, setCardCVC] = React.useState('')
+  const [cardHolder, setCardHolder] = React.useState('');
+  const [cardWeek, setCardWeek] = React.useState('');
+  const [cardYear, setCardYear] = React.useState('');
+  const [cardCvc, setCardCVC] = React.useState('');
   const [errorHolder, setErrorHolder] = React.useState("");
   const [errorCard, setErrorCard] = React.useState("");
   const [errorWeek, setErrorWeek] = React.useState("");
   const [errorCVC, setErrorCVC] = React.useState("");
 
   const [loading, setLoading] = React.useState(false);
-
+  const [modal, setModal] = React.useState(true);
+  const [confirm, setConfirm] = React.useState(false);
+  const [transition, setTrasintion] = React.useState(false);
   
   React.useEffect(()=>{
-    setLoading("true")
+    setLoading(true)
   },[])
 
 
@@ -35,6 +40,15 @@ const App = () => {
     let valido = cardNumber.replace(/(\w{4})(?=\w)/g, '$1 ');
     setCardFormatter(valido);
   },[cardNumber])
+
+  React.useEffect(() => {
+    if(confirm){
+      const timer = setTimeout(() => {
+        setTrasintion(true);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [confirm]);
 
 
 
@@ -298,7 +312,7 @@ const App = () => {
     }
 
     if(validationHolder && validationCard && validationWeek && validationYear && validationCVC){
-      alert('Não fiz o sistema de confirmação ainda')
+      setConfirm(true);
     }else{
       return false;
     }
@@ -309,6 +323,30 @@ const App = () => {
   return (
     <div className="App">
       <Loadinglayer className={ loading ? "carregando-off" : "carregando-on"}/>
+      { 
+      
+      modal 
+      
+      ?
+
+      <div className='modal-info'>
+        <div className='modal-container'>
+          <div className='modal-titulo'>
+              <h2>Aviso</h2>
+              <hr></hr>
+          </div>
+          <div className='modal-desc'>
+            <p>Isso é apenas um projeto front-end, nada que você colocar nesse formulário será enviado para lugar algum.</p>
+          </div>
+          <button onClick={() => {setModal(false)}}>Fechar Aviso</button>
+        </div>
+      </div> 
+      
+      : 
+      
+      ""
+
+      }
       <div className='header-primary'>
         <div className='row'>
           <div className='col-md-3 images'>
@@ -337,7 +375,8 @@ const App = () => {
           </div>
           <div className='col-md-9 formulario'>
               <div className='container form'>
-              <form>
+              <div className="form-card">
+              <Confirmlayer className={confirm ? "confirm-on corfirm" : "confirm-off confirm" } transition={transition} />
               <div className="mb-3">
                   <Input id="cardname" name="cardholder" label="CARDHOLDER NAME"  value={cardHolder} setValue={({target}) => validateCardHolder(target.value)} placeholder="e.g:. Amanda Fernandes" maxLength="32" style={{ borderColor: errorHolder ? "red" : null }}/>
                   {errorHolder && <p style={{fontSize: "10px",color: "red", padding: "6px !important"}}>{errorHolder}</p>}
@@ -368,7 +407,7 @@ const App = () => {
                 <div className="mb-3">
                   <button onClick={validationReal} className='cardbutton'>Confirm</button>
                 </div>
-              </form>
+              </div>
               </div>
           </div>
         </div>
